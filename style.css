@@ -63,3 +63,30 @@ transform: scaleX(-1) rotate(-10deg);
  clip-path: polygon(0% 20%, 100% 20%, 100% 500%, 0% 500%);
 }
 
+
+.Head::before {
+content: "";
+display: block;
+position: absolute;
+height: 120%;
+width: 40%;
+background: var(--brown2);
+top: 80%;
+left: 50%;
+transform: translate(-50%);
+border-radius: 0 0 100% 100% / 30%;
+}
+
+
+.Eye {
+    width: 10%;
+    height: 10%;
+    background: black;
+    border-radius: 50%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,0) translate(-2.5vmin, 0);
+    box-shadow: 5vmin 0;
+}
+
+
