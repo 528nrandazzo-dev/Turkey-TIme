@@ -1,0 +1,52 @@
+html, body {
+    overflow: hidden;
+    background: #fee;
+}
+
+.Turkey {
+    --brown1: #753;
+    --brown2: #975;
+    --orange1: orange;
+    --orange2: darkorange;
+    width: 80vmin;
+    height: 80vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.Turkey, div{
+    position: absolute;
+    box-sizing: border-box;
+}
+
+
+.body {
+    width: 40%;
+    height: 40%;
+  background: var(--brown1);  
+  color: var(--brown1);
+  border-radius: 50%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: -4vmin 14.5vmin 0 -13vmin, 4vmin 14.5vmin 0 -13vmin;
+}
+
+.wings {
+    border-radius: 100% 0% 100% 5%;
+    background: var(--brown2);
+    height: 30%;
+    width: 20%;
+    transform-origin:  top right;
+    transform: rotate(-10deg);
+}
+
+.wings + .wings {
+left: auto;
+right: 43%;
+transform: scaleX(-1) rotate(-10deg);
+
+}
