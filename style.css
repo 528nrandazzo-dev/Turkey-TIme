@@ -35,18 +35,31 @@ html, body {
   box-shadow: -4vmin 14.5vmin 0 -13vmin, 4vmin 14.5vmin 0 -13vmin;
 }
 
-.wings {
+.wing {
     border-radius: 100% 0% 100% 5%;
     background: var(--brown2);
     height: 30%;
     width: 20%;
-    transform-origin:  top right;
+    transform-origin: top right;
+    top: 41.1%;
+    left: 23%;
     transform: rotate(-10deg);
 }
 
-.wings + .wings {
+.wing + .wing {
 left: auto;
 right: 43%;
 transform: scaleX(-1) rotate(-10deg);
-
 }
+
+.Head {
+ height: 19%;
+ width: 19%;
+ top: 15%;
+ left: 50%;
+ border-radius: 50%;
+ background: var(--brown2);
+ transform: translate(-50%);
+ clip-path: polygon(0% 20%, 100% 20%, 100% 500%, 0% 500%);
+}
+
