@@ -1,69 +1,296 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turkey Time</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Doom Turkey</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #fee;
+}
+
+.cartoon {
+    --brown1: #183B2B;
+    --brown2: #315B42;
+    --orange1: #244B37;
+    --orange2: #10291D;
+
+    width: 80vmin;
+    height: 80vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cartoon div {
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.body {
+    width: 40%;
+    height: 40%;
+    background: var(--brown1);
+    color: var(--brown1);
+    border-radius: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow:
+        -4vmin 14.5vmin 0 -13vmin,
+        4vmin 14.5vmin 0 -13vmin;
+    z-index: 2;
+}
+
+.wing {
+    height: 30%;
+    width: 20%;
+    background: var(--brown2);
+    border-radius: 100% 0% 100% 5%;
+    top: 41%;
+    left: 23%;
+    transform-origin: top right;
+    transform: rotate(-10deg);
+    z-index: 4;
+}
+
+.wing + .wing {
+    left: auto;
+    right: 43%;
+    transform: scaleX(-1) rotate(-10deg);
+}
+
+.head {
+    width: 19%;
+    height: 19%;
+    border-radius: 50%;
+    background: var(--brown2);
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    clip-path: polygon(0% 20%, 100% 20%, 100% 500%, 0% 500%);
+    z-index: 6;
+}
+
+.head::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 120%;
+    background: var(--brown2);
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 0 0 100% 100% / 30%;
+}
+
+.eye {
+    width: 10%;
+    height: 10%;
+    background: black;
+    border-radius: 50%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, 0) translate(-2.5vmin, 0);
+    box-shadow: 5vmin 0;
+}
+
+.beak {
+    border-left: 4vmin solid #A6AAA5;
+    width: 4vmin;
+    height: 3vmin;
+    border-top: 1.5vmin solid transparent;
+    border-bottom: 1.5vmin solid transparent;
+    top: 60%;
+    left: 50%;
+}
+
+.red {
+    width: 2.5vmin;
+    height: 6vmin;
+    background: #315B42;
+    border-radius: 100% / 100% 0 100% 100%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-100%, 0);
+}
+
+.leg {
+    width: 3%;
+    height: 21%;
+    background: #A6AAA5;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, 0) translate(-4vmin, 0);
+    border-radius: 5vmin / 50%;
+    background-image:
+        repeating-linear-gradient(transparent 0 10%, rgba(0,0,0,0.1) 0 11%);
+    z-index: 3;
+}
+
+.leg + .leg {
+    transform: translate(-50%, 0) translate(4vmin, 0);
+}
+
+
+.leg::after {
+    transform: translate(-50%, 0) rotate(-30deg);
+}
+
+
+
+.hat-top::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 2vmin;
+    border: 1vmin solid #772;
+    border-radius: 1vmin;
+    bottom: 3.25vmin;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.tail {
+    width: 10%;
+    height: 40%;
+    background: var(--orange1);
+    border-radius: 100% / 30% 30% 170% 170%;
+    transform-origin: 50% 100%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1;
+}
+
+.tail:nth-child(odd) {
+    background: var(--orange1);
+}
+
+.tail:nth-child(even) {
+    background: var(--orange2);
+}
+
+.tail:nth-child(1) { transform: translate(-50%, 0) rotate(0); }
+.tail:nth-child(2) { transform: translate(-50%, 0) rotate(17deg); }
+.tail:nth-child(3) { transform: translate(-50%, 0) rotate(34deg); }
+.tail:nth-child(4) { transform: translate(-50%, 0) rotate(51deg); }
+.tail:nth-child(5) { transform: translate(-50%, 0) rotate(68deg); }
+.tail:nth-child(6) { transform: translate(-50%, 0) rotate(85deg); }
+.tail:nth-child(7) { transform: translate(-50%, 0) rotate(102deg); }
+.tail:nth-child(8) { transform: translate(-50%, 0) rotate(-17deg); }
+.tail:nth-child(9) { transform: translate(-50%, 0) rotate(-34deg); }
+.tail:nth-child(10) { transform: translate(-50%, 0) rotate(-51deg); }
+.tail:nth-child(11) { transform: translate(-50%, 0) rotate(-68deg); }
+.tail:nth-child(12) { transform: translate(-50%, 0) rotate(-85deg); }
+.tail:nth-child(13) { transform: translate(-50%, 0) rotate(-102deg); }
+
+/* DOCTOR DOOM ACCESSORIES */
+
+/* DOCTOR DOOM MASK */
+.doom-mask {
+    position: absolute;
+    width: 97%;
+    height: 27%;
+    top: 13%;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* DOCTOR DOOM CHAIN */
+.doom-chain {
+    position: absolute;
+    width: 45%;
+    height: 25%;
+    top: 35%;
+    left: 50%;
+        transform: translateX(-50%) rotate(-8deg);
+    object-fit: fill;
+    z-index: 8;
+    pointer-events: none;
+}
+
+/* BOTH BOOTS IN ONE IMAGE */
+.boots {
+    position: absolute;
+    width: 105%;
+height: 32%;
+    left: 50%;
+    bottom: -12%;
+    transform: translateX(-50%);
+    object-fit: contain;
+    z-index: 11;
+    pointer-events: none;
+}
+</style>
 </head>
+
 <body>
 
-<div class="Turkey">
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
-<div class="Tail"></div>
+<div class="cartoon">
 
-<div class="Leg"></div>
-<div class="Leg"></div>
+    <!-- TAIL FEATHERS -->
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
 
-<div class="body"></div>
+    <!-- LEGS -->
+    <div class="leg"></div>
+    <div class="leg"></div>
 
-<div class="wing"></div>
-<div class="wing"></div>
+    <!-- BODY AND WINGS -->
+    <div class="body"></div>
+    <div class="wing"></div>
+    <div class="wing"></div>
 
-<div class="Top Hat"></div>
+    <!-- HAT -->
+    <div class="hat-top"></div>
+    <div class="hat-bottom"></div>
 
-<div class="Bottom Hat"></div>
+    <!-- HEAD -->
+    <div class="head">
+        <div class="eye"></div>
+        <div class="beak"></div>
+        <div class="red"></div>
+    </div>
 
-<div class="Head">
-    <div class="Eye"></div>
+    <!-- DOCTOR DOOM MASK -->
+    <img class="doom-mask"
+         src="Hooded Iron Mask with Shadowed Eye Cutouts (1).png"
+         alt="Doctor Doom mask">
 
-<div class="Beak"></div>
+    <!-- DOCTOR DOOM CHAIN -->
+    <img class="doom-chain"
+         src="silver_cape_clasp_chain.png"
+         alt="Doctor Doom chain">
 
-<div class="red"></div>
+    <!-- BOTH BOOTS IN ONE IMAGE -->
+    <img src="Doom foot.png"
+         class="boots"
+         alt="Doctor Doom boots">
 
 </div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    
-
 
 </body>
 </html>
